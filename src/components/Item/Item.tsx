@@ -25,7 +25,7 @@ export const Item: React.FC<{ item: SeminarType }> = React.memo(({ item }) => {
       };
   return (
     <li
-    className="grid grid-rows grid-cols-2 items-center gap-3 border border-blue-700 border-2 py-3 px-2 rounded "
+    className="grid grid-rows grid-cols-2 items-center gap-3 border-blue-700 border-2 py-3 px-2 rounded "
   >
     <img
     className="col-span-full min-h-80"
