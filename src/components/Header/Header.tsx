@@ -11,8 +11,5 @@ export const Header: React.FC<{
   <header className={`header ${className ? className : ""}`}>
       {children}
     </header>
-
-
-    
   );
 };

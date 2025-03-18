@@ -3,26 +3,36 @@ import { Header } from "./components/Header/Header";
 import { Main } from "./components/Main/Main";
 import { Button } from "./components/UI/Button/Button";
 import { createPortal } from "react-dom";
+import { ModalWindow } from "./components/UI/ModalWindow/ModalWindow";
+import { SeminarForm } from "./components/UI/SeminarForm/SeminarForm";
 
 
 
 function App() {
   const [isModalShow, setIsModalShow] = useState(false)
 
-  const HandleClick = () => {
-    setIsModalShow(!isModalShow)
+  const handleClick = () => {
+      setIsModalShow(true) 
+  }
+
+  const handleClose = (e: React.MouseEvent<HTMLDivElement>) =>{
+    if(e.target === e.currentTarget){
+      setIsModalShow(false)
+    }
   }
   return (
     <> 
     <span id="modal"></span>
       <Header>
         <a href="#">Logo</a>
-        <Button className="btn-white justify-self-end" onClick={HandleClick} >Добавить</Button>
+        <Button className="btn-white justify-self-end" onClick={handleClick}>Добавить</Button>
       </Header>
       <Main></Main>
       {
         isModalShow && createPortal(
-          <div className="w-screen h-screen absolute t-0 r-0 bg-red-500" onClick={HandleClick}>121212</div>,
+          <ModalWindow closeFn={handleClose}>
+            <SeminarForm title="Добавте семинар"/>
+          </ModalWindow>,
           document.getElementById('modal')!
         )
       }
