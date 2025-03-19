@@ -14,4 +14,7 @@ body {
   .header {
     @apply bg-blue-700 min-w-3xs h-18 text-white px-2 py-1 grid grid-cols-2 auto-rows-auto items-center;
   }
+  .form-input {
+    @apply w-9/12 border-2 rounded-md placeholder:text-gray-500 px-1 py-1 text-base;
+  }
 }

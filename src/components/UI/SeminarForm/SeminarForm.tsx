@@ -8,13 +8,15 @@ export type SeminarFormType = {
 
 export const SeminarForm: React.FC<SeminarFormType> = ({title}) => {
   return (
-    <form className="w-screen h-screen bg-white flex flex-col items-center">
+    <form className="w-screen h-10/12 bg-white flex flex-col items-center gap-5 py-2 rounded-md">
         <h3 className="font-bold text-center text-xl mb-2 ">{title}</h3>
-      <input className="w-9/12 border-2 rounded-md not-[]:placeholder:text-gray-500 px-1 py-1 text-base" placeholder="заголовок" type="text" name="title" />
-      <textarea rows={4} name="description"></textarea>
-      <input type="text" name="photo" />
-      <input type="date" name="date" />
-      <input type="time" name="time" />
+      <input className="form-input" placeholder="заголовок" type="text" name="title" />
+      <textarea className="form-input" rows={4} name="description" placeholder="описание"></textarea>
+      <input className="form-input" type="text" name="photo" placeholder="ссылка на фото"/>
+    
+      <input className="form-input" type="date" name="date"/>
+      <input className="form-input" type="time" name="time" />
+      <button className="btn-blue">отправить</button>
     </form>
   );
 };
