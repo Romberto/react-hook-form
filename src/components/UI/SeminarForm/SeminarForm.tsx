@@ -1,20 +1,10 @@
 import React from "react";
-import { SeminarType } from "../../../utils/types";
+import { SeminarCreateType, SeminarFormType } from "../../../utils/types";
 import { useForm } from "react-hook-form";
 import { dateValid } from "../../../utils/utils";
+import { useAddSeminarMutation } from "../../../servises/seminars";
 
-export type SeminarFormType = {
-  title: string;
-  data?: SeminarType[];
-};
 
-export type SeminarCreateType = {
-  title: string;
-  description: string;
-  date: string;
-  time: string;
-  photo: string;
-};
 
 export const SeminarForm: React.FC<SeminarFormType> = ({ title }) => {
   const {
@@ -24,8 +14,10 @@ export const SeminarForm: React.FC<SeminarFormType> = ({ title }) => {
 
     formState: { errors, isValid },
   } = useForm<SeminarCreateType>({ mode: "onBlur" });
+
+  const [addSeminar] = useAddSeminarMutation()
   const handleFormSubmit = (data: SeminarCreateType) => {
-    console.log(data);
+    addSeminar(data)
     reset();
   };
 
@@ -127,7 +119,7 @@ export const SeminarForm: React.FC<SeminarFormType> = ({ title }) => {
         </div>
       </label>
 
-      <button className="btn-blue" type="submit" disabled={isValid}>
+      <button className="btn-blue" type="submit" disabled={!isValid}>
         отправить
       </button>
     </form>
