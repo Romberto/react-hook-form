@@ -10,7 +10,6 @@ import { SeminarForm } from "./components/UI/SeminarForm/SeminarForm";
 
 function App() {
   const [isModalShow, setIsModalShow] = useState(false)
-
   const handleClick = () => {
       setIsModalShow(true) 
   }

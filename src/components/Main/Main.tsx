@@ -8,7 +8,6 @@ export const Main: React.FC<{
   const { data, error, isLoading } = useGetAllSeminarsQuery(undefined);
   if (isLoading) return <p>Loading...</p>;
   if (error || !data) return <p>Error...</p>;
-  console.log(data);
   return (
     <>
       <div className="grid grid-cols-1 grig-rows-auto items-center gap-row-4">
