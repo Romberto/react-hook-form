@@ -4,6 +4,9 @@ import './index.css'
 import App from './App.tsx'
 import { Provider } from 'react-redux'
 import { store } from './app/store.ts'
+if (import.meta.hot) {
+  import.meta.hot.accept();
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

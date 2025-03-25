@@ -9,7 +9,7 @@ export const seminarApi = createApi({
   tagTypes: ["Seminars"],
   endpoints: (builder) => ({
     getAllSeminars: builder.query<SeminarType[], undefined>({
-      query: () => `seminars/`,
+      query: () => "seminars/",
       providesTags: (result) =>
         // is result available?
         result
@@ -29,9 +29,27 @@ export const seminarApi = createApi({
       }),
       invalidatesTags: [{ type: "Seminars", id: "LIST" }],
     }),
+    removeSeminar: builder.mutation<string, string>({
+      query: (id) => ({
+        url: `seminars/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [{ type: "Seminars", id: "LIST" }],
+    }),
+    editSeminar: builder.mutation<string, SeminarCreateType>({
+      query: (body) => ({
+        url: `seminars/${body.id}`,
+        method: "PUT",
+        body: body,
+      }),
+      invalidatesTags: [{ type: "Seminars", id: "LIST" }],
+    }),
   }),
 });
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetAllSeminarsQuery, useAddSeminarMutation } = seminarApi;
+export const {
+  useGetAllSeminarsQuery,
+  useAddSeminarMutation,
+  useRemoveSeminarMutation,
+  useEditSeminarMutation
+} = seminarApi;

@@ -73,12 +73,28 @@
       "photo": "https://picsum.photos/id/10/750/730"
     },
     {
-      "id": "2334",
-      "title": "test",
-      "description": "test",
-      "photo": "http://",
-      "date": "2025-03-22",
-      "time": "12:04"
+      "id": "ff77",
+      "date": "03.04.2025",
+      "title": "ugauga19",
+      "description": "584",
+      "photo": "http://29",
+      "time": "12:02"
+    },
+    {
+      "id": "617d",
+      "date": "27.03.2025",
+      "title": "lorem",
+      "description": "loremИспользуем useForm для управления состоянием формы и useFieldArray для динамического управления массивом полей. Кнопки \"Add Member\" и \"Remove\" позволяют юзеру добавлять и удалять поля соответственно.",
+      "photo": "http://27",
+      "time": "13:48"
+    },
+    {
+      "id": "580c",
+      "date": "27.03.2025",
+      "title": "testr",
+      "description": "werwe",
+      "photo": "http://27",
+      "time": "13:48"
     }
   ]
 }

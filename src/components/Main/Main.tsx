@@ -2,22 +2,16 @@ import React from "react";
 import { Item } from "../Item/Item";
 import { useGetAllSeminarsQuery } from "../../servises/seminars";
 
-export const Main: React.FC<{
-  children?: React.ReactNode;
-}> = ({ children }) => {
-  const { data, error, isLoading } = useGetAllSeminarsQuery(undefined);
+export const Main: React.FC = () => {
+  const { data, isLoading, isError } = useGetAllSeminarsQuery(undefined);
   if (isLoading) return <p>Loading...</p>;
-  if (error || !data) return <p>Error...</p>;
+  if (isError) return <p>что то пошло не так ;\</p>;
+
   return (
-    <>
-      <div className="grid grid-cols-1 grig-rows-auto items-center gap-row-4">
-        <ul className="flex flex-col items-center py-2 px-3 gap-4">
-          {data.map((item) => {
-            return <Item key={item.id} item={item} />;
-          })}
-        </ul>
-        {children}
-      </div>
-    </>
+    <ul className="grid grid-cols-1 grig-rows-auto items-start justify-center gap-4 pt-20 md:grid-cols-2">
+      {data?.map((item) => {
+        return <Item key={item.id} item={item} />;
+      })}
+    </ul>
   );
 };
