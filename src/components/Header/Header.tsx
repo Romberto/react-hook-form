@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { createPortal } from "react-dom";
+import { Button } from "../UI/Button/Button";
 
-export const Header: React.FC<{
-  className?: string;
-  children?: React.ReactNode;
-}> = ({ className, children }) => {
 
-    
+
+export const Header: React.FC<{onClick: ()=>void}> = React.memo(({onClick}) => {
+  console.log("header");
   return (
-  <header className={`header ${className ? className : ""}`}>
-      {children}
+    <header>
+      <a href="#">Logo</a>
+      <Button className="btn-white justify-self-end" onClick={()=> onClick()}>
+        Добавить
+      </Button>
     </header>
-
-
-    
   );
-};
+});

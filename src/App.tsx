@@ -1,31 +1,35 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Header } from "./components/Header/Header";
 import { Main } from "./components/Main/Main";
 import { Button } from "./components/UI/Button/Button";
 import { createPortal } from "react-dom";
-
-
+import { ModalWindow } from "./components/UI/ModalWindow/ModalWindow";
+import { SeminarForm } from "./components/UI/SeminarForm/SeminarForm";
 
 function App() {
-  const [isModalShow, setIsModalShow] = useState(false)
+  const [isModalShow, setIsModalShow] = useState(false);
 
-  const HandleClick = () => {
-    setIsModalShow(!isModalShow)
-  }
+  const handleClick = useCallback(() => {
+    setIsModalShow(true);
+  }, []);
+
+  const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      setIsModalShow(false);
+    }
+  };
   return (
-    <> 
-    <span id="modal"></span>
-      <Header>
-        <a href="#">Logo</a>
-        <Button className="btn-white justify-self-end" onClick={HandleClick} >Добавить</Button>
-      </Header>
+    <>
+      <span id="modal"></span>
+      <Header onClick={handleClick}></Header>
       <Main></Main>
-      {
-        isModalShow && createPortal(
-          <div className="w-screen h-screen absolute t-0 r-0 bg-red-500" onClick={HandleClick}>121212</div>,
-          document.getElementById('modal')!
-        )
-      }
+      {isModalShow &&
+        createPortal(
+          <ModalWindow closeFn={handleClose}>
+            <SeminarForm title="Добавте семинар" onClose={()=>setIsModalShow(false)}/>
+          </ModalWindow>,
+          document.getElementById("modal")!
+        )}
     </>
   );
 }
